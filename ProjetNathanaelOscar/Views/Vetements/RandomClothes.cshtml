@@ -1,0 +1,49 @@
+﻿@model ProjetNathanaelOscar.Models.VetementTypeViewModel
+
+@{
+    ViewData["Title"] = "Random Clothes";
+}
+
+<h1>Random</h1>
+
+<h1>Vetements</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vetements[0].Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vetements[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vetements[0].DateObtention)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vetements[0].Image)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vetements) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateObtention)
+            </td>
+            <td>
+                <img src="@item.Image" width="200" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a href="@Url.Action("index")" class="btn btn-primary">Home</a>
+<a href="@Url.Action("RandomClothes")" class="btn btn-primary">Nouvelle Tenu</a>
+

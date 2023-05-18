@@ -1,0 +1,46 @@
+﻿@model ProjetNathanaelOscar.Models.VetementTypeViewModel
+
+@{
+    ViewData["Title"] = "Projet_Prog_4";
+}
+
+
+<h1>Vetements</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Vetements" asp-action="Index" method="get">
+    <p>
+
+        <select asp-for="TypeVetement" asp-items="Model.TypeVetement">
+            <option value="">All</option>
+        </select>
+        Nom: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vetements[0].Nom)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vetements) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VetementId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.VetementId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.VetementId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a href="@Url.Action("RandomClothes")" class="btn btn-primary">Tenue aléatoires</a>
